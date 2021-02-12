@@ -47,5 +47,45 @@ p {
     text-transform: uppercase;
 }
 
-
 /** CODIGO AQUI **/
+@media (min-width: 768px) {
+    .layout-shifter {
+        display: grid;
+        grid-template-areas: "contenido"
+                             "inferior";
+        /*primero ponemos los 'nombres' que utilizaremos*/
+    }
+
+    .sidebar {
+        grid-area: inferior;
+    }
+    /*Especificamos el nombre a quien le corresponda para poder posicionar*/
+
+    .contenido-principal {
+        grid-area: contenido;
+        display: grid;
+        grid-template-areas: "entrada1 entrada2";
+        grid-template-columns: repeat(2 , 1fr);
+        column-gap: 2rem;
+    }
+    /*Posicionamos el contenido de adentro*/
+}
+
+@media (min-width: 992px) {
+    .layout-shifter {
+        grid-template-areas: "contenido sidebar";
+        column-gap: 2rem;
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+    }
+
+    .contenido-principal {
+        grid-area: contenido;
+        grid-template-areas: "entrada1"
+                             "entrada2";
+        grid-template-columns: none;
+        /*Quitamos el grid-template-columns: repeat(2 , 1fr); porque ya no nos sirve*/
+    }
+}
